@@ -351,6 +351,7 @@
 "Assets/Scripts/Class1.cs"
 "Assets/Scripts/LearningCurve.cs"
 "Assets/Scripts/Paladin.cs"
+"Assets/Scripts/PlayerBehaviour.cs"
 -langversion:9.0
 
 /deterministic
