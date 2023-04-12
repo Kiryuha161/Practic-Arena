@@ -6,7 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"));
+        if(other.name == "Player")
         {
             Debug.Log("Player is found - attack!");
         }
@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"));
+        if(other.name == "Player")
         {
             Debug.Log("Player out of range, resume patrol");
         }
