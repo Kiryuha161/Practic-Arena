@@ -352,6 +352,7 @@
 "Assets/Scripts/Character.cs"
 "Assets/Scripts/Class1.cs"
 "Assets/Scripts/EnemyBehaviour.cs"
+"Assets/Scripts/GameBehaviour.cs"
 "Assets/Scripts/ItemBehaviour.cs"
 "Assets/Scripts/LearningCurve.cs"
 "Assets/Scripts/Paladin.cs"
