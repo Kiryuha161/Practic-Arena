@@ -520,6 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showWinScreen: 0
+  _showLoseScreen: 0
   _maxItems: 1
 --- !u!4 &634725256
 Transform:
@@ -1439,6 +1440,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1222078161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1695001797733261144, guid: 624ffb5186606b540ac0468c8d6e1f37, type: 3}
+  m_PrefabInstance: {fileID: 1695001798807569468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1222078168
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222078161}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1270389611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,8 +2106,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1695001797733261142, guid: 624ffb5186606b540ac0468c8d6e1f37, type: 3}
+      propertyPath: PatrolRoute
+      value: 
+      objectReference: {fileID: 2144455047}
     - target: {fileID: 1695001797733261144, guid: 624ffb5186606b540ac0468c8d6e1f37, type: 3}
       propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695001797733261144, guid: 624ffb5186606b540ac0468c8d6e1f37, type: 3}
+      propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2260,6 +2288,14 @@ PrefabInstance:
     - target: {fileID: 6121984033572744981, guid: 45b19749c94dfa0409e204f82e2cabb5, type: 3}
       propertyPath: _layerGround.m_Bits
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121984033572745001, guid: 45b19749c94dfa0409e204f82e2cabb5, type: 3}
+      propertyPath: m_Radius
+      value: 0.5135999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121984033572745001, guid: 45b19749c94dfa0409e204f82e2cabb5, type: 3}
+      propertyPath: m_Center.z
+      value: -0.013599873
       objectReference: {fileID: 0}
     - target: {fileID: 6121984033572745007, guid: 45b19749c94dfa0409e204f82e2cabb5, type: 3}
       propertyPath: m_Name

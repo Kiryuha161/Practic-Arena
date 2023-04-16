@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameBehaviour : MonoBehaviour
 {
     [SerializeField] private bool _showWinScreen = false;
+    [SerializeField] private bool _showLoseScreen = false;
     private string _labelText = "Collect all 4 items and you will win the game";
     [SerializeField] private int _maxItems = 4;
     private int _itemCollected = 0;
@@ -28,9 +29,10 @@ public class GameBehaviour : MonoBehaviour
             _itemCollected = value;
             if (_itemCollected >= _maxItems)
             {
-                _labelText = $"You win!";
-                _showWinScreen = true;
-                Time.timeScale = 0;
+                //_showWinScreen = true;
+                //_labelText = $"You win!";
+                //Time.timeScale = 0;
+                SetWinLoseScreen(ref _showWinScreen, "You win!");
             }
             else
             {
@@ -52,8 +54,34 @@ public class GameBehaviour : MonoBehaviour
         set
         {
             _playerHP = value;
-            Debug.LogFormat($"Lives: {_playerHP}");
+
+            if (_playerHP <= 0)
+            {
+                //_showLoseScreen = true;
+                //_labelText = "Do you want play again?";
+                //Time.timeScale = 0;
+                SetWinLoseScreen(ref _showLoseScreen, "Do you want play again?");
+            }
+            else
+            {
+                _labelText = "Ouch...It was hurt!";
+                Debug.LogFormat($"Lives: {_playerHP}");
+            }
         }
+    }
+
+    private bool SetWinLoseScreen(ref bool showScreen, string text)
+    {
+        showScreen = true;
+        _labelText = text;
+        Time.timeScale = 0;
+        return showScreen;
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 
     private void OnGUI()
@@ -67,8 +95,15 @@ public class GameBehaviour : MonoBehaviour
         {
             if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height - 200, 200, 100), "You won!"))
             {
-                SceneManager.LoadScene(0);
-                Time.timeScale = 1f;
+                RestartLevel();
+            }
+        }
+
+        if (_showLoseScreen)
+        {
+            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height - 200, 200, 100), "You lose..."))
+            {
+                RestartLevel();
             }
         }
 

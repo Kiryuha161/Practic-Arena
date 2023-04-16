@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
@@ -16,6 +17,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     [SerializeField] private LayerMask _layerGround;
     [SerializeField] private GameObject bulletPrefab;
+    private GameBehaviour _gameManager;
     private CapsuleCollider _col;
     private Rigidbody _rb;
 
@@ -25,9 +27,17 @@ public class PlayerBehaviour : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _col= GetComponent<CapsuleCollider>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameBehaviour>();
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            _gameManager.HP -= 1;
+        }
+    }
+
     private void Update()
     {
         _hInput = Input.GetAxis("Horizontal") * _speedRotate;
