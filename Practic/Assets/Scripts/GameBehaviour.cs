@@ -8,10 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class GameBehaviour : MonoBehaviour
 {
+    private const int MaxItems = 1;
+
     [SerializeField] private bool _showWinScreen = false;
     [SerializeField] private bool _showLoseScreen = false;
     private string _labelText = "Collect all 4 items and you will win the game";
-    [SerializeField] private int _maxItems = 4;
     private int _itemCollected = 0;
 
    
@@ -27,16 +28,13 @@ public class GameBehaviour : MonoBehaviour
         {
 
             _itemCollected = value;
-            if (_itemCollected >= _maxItems)
+            if (_itemCollected >= MaxItems)
             {
-                //_showWinScreen = true;
-                //_labelText = $"You win!";
-                //Time.timeScale = 0;
                 SetWinLoseScreen(ref _showWinScreen, "You win!");
             }
             else
             {
-                _labelText = $"You need yet {_maxItems - _itemCollected} items";
+                _labelText = $"You need yet {MaxItems - _itemCollected} items";
             }
 
 
@@ -57,9 +55,6 @@ public class GameBehaviour : MonoBehaviour
 
             if (_playerHP <= 0)
             {
-                //_showLoseScreen = true;
-                //_labelText = "Do you want play again?";
-                //Time.timeScale = 0;
                 SetWinLoseScreen(ref _showLoseScreen, "Do you want play again?");
             }
             else
@@ -70,18 +65,11 @@ public class GameBehaviour : MonoBehaviour
         }
     }
 
-    private bool SetWinLoseScreen(ref bool showScreen, string text)
+    private void SetWinLoseScreen(ref bool showScreen, string text)
     {
         showScreen = true;
         _labelText = text;
         Time.timeScale = 0;
-        return showScreen;
-    }
-
-    private void RestartLevel()
-    {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1f;
     }
 
     private void OnGUI()
@@ -95,7 +83,7 @@ public class GameBehaviour : MonoBehaviour
         {
             if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height - 200, 200, 100), "You won!"))
             {
-                RestartLevel();
+                Utilities.RestartLevel(0);
             }
         }
 
@@ -103,7 +91,7 @@ public class GameBehaviour : MonoBehaviour
         {
             if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height - 200, 200, 100), "You lose..."))
             {
-                RestartLevel();
+                Utilities.RestartLevel();
             }
         }
 
